@@ -1,4 +1,6 @@
-#include "library.h"
+// Thanks Pat :)
+
+#include "hammdist.h"
 
 #include <cpuid.h>
 #include <popcntintrin.h>
@@ -65,7 +67,7 @@ static inline int lookup64(uint64_t v) {
 	return lookup32((uint32_t) (v & 0x00000000FFFFFFFF)) + lookup32((uint32_t) ((v & 0xFFFFFFFF00000000) >> 32));
 }
 
-int hamm_distance32(uint32_t v1, uint32_t v2) {
+int hamm_distance32(const uint32_t v1, const uint32_t v2) {
 	register uint32_t v = v1 ^ v2;
 	if(is_fast) {
 		return _mm_popcnt_u32(v);
@@ -74,7 +76,7 @@ int hamm_distance32(uint32_t v1, uint32_t v2) {
 		return lookup32(v);
 	}
 }
-int hamm_distance64(uint64_t v1, uint64_t v2) {
+int hamm_distance64(const uint64_t v1, const uint64_t v2) {
 	register uint64_t v = v1 ^ v2;
 	if(is_fast) {
 		return (int) _mm_popcnt_u64(v);
@@ -83,7 +85,7 @@ int hamm_distance64(uint64_t v1, uint64_t v2) {
 		return lookup64(v);
 	}
 }
-int hamm_distance32_m(uint32_t *v1, uint32_t *v2, unsigned int count) {
+int hamm_distance32_m(const uint32_t *v1, const uint32_t *v2, unsigned int count) {
 	register uint32_t v;
 	register int ret;
 
@@ -103,7 +105,7 @@ int hamm_distance32_m(uint32_t *v1, uint32_t *v2, unsigned int count) {
 
 	return ret;
 }
-int hamm_distance64_m(uint64_t *v1, uint64_t *v2, unsigned int count) {
+int hamm_distance64_m(const uint64_t *v1, const uint64_t *v2, unsigned int count) {
 	register uint64_t v;
 	register int ret;
 

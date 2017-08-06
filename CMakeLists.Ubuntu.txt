@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.7)
 project(dHamming)
 
 find_package(SWIG REQUIRED)
@@ -29,5 +29,5 @@ find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_PATH})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 set_property(SOURCE dHamming.i PROPERTY CPLUSPLUS ON)
-swig_add_library(dHammingPy LANGUAGE python SOURCES dHamming.i)
+swig_add_module(dHammingPy python dHamming.i)
 swig_link_libraries(dHammingPy ${PYTHON_LIBRARIES} dHamming)
