@@ -2,6 +2,7 @@
 #define DHAMMING_LIBRARY_H
 
 #include <cstdint>
+#include <string>
 #include <array>
 #include <list>
 #include <vector>
