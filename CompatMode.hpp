@@ -2,6 +2,7 @@
 #define DHAMMING_COMPATMODE_H
 #include <vector>
 #include <list>
+#include <string>
 #include <cstdint>
 
 namespace Chloride {
