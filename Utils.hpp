@@ -6,6 +6,7 @@
 #define DHAMMING_UTILS_H
 
 #include <cstdint>
+#include <string>
 #include <vector>
 
 class Utils {
